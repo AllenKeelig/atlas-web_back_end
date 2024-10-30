@@ -24,4 +24,8 @@ export default class Car {
   cloneCar() {
     return new Car(this._brand, this._motor, this._color);
   }
+
+  static get [Symbol.species]() {
+    return this;
+  }
 }
