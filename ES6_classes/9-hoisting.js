@@ -19,19 +19,19 @@ export class StudentHolberton {
   constructor(firstName, lastName) {
     this._firstName = firstName;
     this._lastName = lastName;
-    this._holbertonClass = holbertonClass;
+    this._HolbertonClass = HolbertonClass;
   }
 
   get fullName() {
     return `${this._firstName} ${this._lastName}`;
   }
 
-  get holbertonClass() {
-    return this.holbertonClass;
+  get HolbertonClass() {
+    return this.HolbertonClass;
   }
 
   get fullStudentDescription() {
-    return `${self._firstName} ${self._lastName} - ${self._holbertonClass.year} - ${self._holbertonClass.location}`;
+    return `${self._firstName} ${self._lastName} - ${self._HolbertonClass.year} - ${self._HolbertonClass.location}`;
   }
 }
 
