@@ -7,7 +7,7 @@
 from typing import List
 import asyncio
 import importlib
-task_wait_random = getattr(importlib.import_module("3-tasks.py"),
+task_wait_random = getattr(importlib.import_module("3-tasks"),
                       "task_wait_random")
 
 
