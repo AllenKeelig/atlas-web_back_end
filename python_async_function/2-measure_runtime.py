@@ -12,7 +12,7 @@ wait_n = getattr(importlib.import_module("1-concurrent_coroutines"),
 
 
 def measure_time(n: int, max_delay: int) -> float:
-    """takes integers n and max_delay and mesures total execution time for wait_n"""
+    """takes integers n and max_delay and mesures total execution time"""
     start_time = perf_counter()
     asyncio.run(wait_n(n, max_delay))
     total_time = perf_counter() - start_time
