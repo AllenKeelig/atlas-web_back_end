@@ -7,8 +7,8 @@
 import asyncio
 from time import perf_counter
 import importlib
-wait_random = getattr(importlib.import_module("1-concurrent_coroutines"),
-                      "wait_n")
+wait_n = getattr(importlib.import_module("1-concurrent_coroutines"),
+                 "wait_n")
 
 
 def measure_time(n: int, max_delay: int) -> float:
