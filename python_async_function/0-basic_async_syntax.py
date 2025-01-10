@@ -5,18 +5,15 @@
 """
 
 
-from typing import List
-from 0-basic_async_syntax import wait_random
 import asyncio
+import random
 
-async def wait_n(n: int, max_delay: int) -> List[float]:
-    """takes 2 int arguments n and max_delay and spawns wait_random"""
-    delays = []
-    for _ in range(n):
-        delays.append(asyncio.create_task(wait_random(max_delay)))
 
-    completed_delays = []
-    for task in asyncio.as_completed(delays):
-        completed_delays.append(await task)
-
-    return completed_delays
+async def wait_random(max_delay: int = 10) -> float:
+    """
+    takes in an integer argument named wait_random
+    that waits for a random delay
+    """
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay

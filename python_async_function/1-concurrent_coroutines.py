@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-
+"""
+ async routine called wait_n that takes in 2 int arguments
+"""
 
 
 from typing import List
-from 0_basic_async_syntax import wait_random
+import importlib
+wait_random = getattr(importlib.import_module("0-basic_async_syntax"), "wait_random")
 import asyncio
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
+    """takes 2 int arguments n and max_delay and spawns wait_random"""
     delays = []
     for _ in range(n):
         delays.append(asyncio.create_task(wait_random(max_delay)))
 
     completed_delays = []
     for task in asyncio.as_completed(delays):
-        delay = await task
-        completed_delays.append(delay)
+        completed_delays.append(await task)
 
     return completed_delays
