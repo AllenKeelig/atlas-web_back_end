@@ -6,13 +6,14 @@ coroutine called async_generator that takes no arguments.
 
 import asyncio
 import random
+from typing import AsyncGenerator
 
 
-async def async_generator(): -> Generator[float, None, None]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
-     loop 10 times
-     asynchronously wait 1 second
-     yield a random number between 0 and 10.
+    Loop 10 times.
+    Asynchronously wait 1 second.
+    Yield a random number between 0 and 10.
     """
     for _ in range(10):
         await asyncio.sleep(1)
