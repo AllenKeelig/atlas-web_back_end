@@ -11,7 +11,7 @@ task_wait_random = getattr(importlib.import_module("3-tasks.py"),
                       "task_wait_random")
 
 
-async def wait_n(n: int, max_delay: int) -> List[float]:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """takes 2 int arguments n and max_delay and spawns wait_random"""
     delays = []
     for _ in range(n):
