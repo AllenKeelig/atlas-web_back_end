@@ -8,7 +8,7 @@ from typing import List
 import asyncio
 import importlib
 task_wait_random = getattr(importlib.import_module("3-tasks"),
-                      "task_wait_random")
+                           "task_wait_random")
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
