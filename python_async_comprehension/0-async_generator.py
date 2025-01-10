@@ -9,7 +9,7 @@ import random
 from typing import AsyncGenerator
 
 
-async def async_generator() -> AsyncGenerator[float, None, None]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     Loop 10 times.
     Asynchronously wait 1 second.
@@ -17,4 +17,4 @@ async def async_generator() -> AsyncGenerator[float, None, None]:
     """
     for _ in range(10):
         await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+        yield random.(0, 10)
