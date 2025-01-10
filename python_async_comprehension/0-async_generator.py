@@ -6,11 +6,10 @@ coroutine called async_generator that takes no arguments.
 
 import asyncio
 import random
-from typing import Generator
+from typing import AsyncGenerator
 
 
-async def async_generator() -> Generator[float, None]:
-
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     Loop 10 times.
     Asynchronously wait 1 second.
