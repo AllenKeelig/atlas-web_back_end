@@ -8,7 +8,7 @@ from typing import List
 import asyncio
 import importlib
 wait_random = getattr(importlib.import_module("0-basic_async_syntax"),
-"wait_random")
+                      "wait_random")
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
