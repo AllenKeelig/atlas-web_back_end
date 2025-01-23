@@ -3,13 +3,15 @@
 """
 from base_caching import BaseCaching
 
+
 class LRUCache(BaseCaching):
     """
     class LRUCache that inherits from BaseCaching and is a caching system
     """
     def __init__(self):
-        """ Initialize the class """
+        """ Initialize LRUCache"""
         super().__init__()
+        self.access_order = []
 
     def put(self, key, item):
         """
