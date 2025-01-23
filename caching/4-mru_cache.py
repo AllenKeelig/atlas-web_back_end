@@ -13,7 +13,9 @@ class MRUCache(BaseCaching):
         self.most_recent_key = None
 
     def put(self, key, item):
-        """assign to the dictionary self.cache_data the item value for the key key"""
+        """
+        assign to the dictionary self.cache_data the item value for the key
+        """
         if key is None or item is None:
             return
         if key in self.cache_data:
