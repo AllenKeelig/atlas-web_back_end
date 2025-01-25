@@ -47,10 +47,11 @@ class Server:
         data = []
         current_index = index
         retrieved = 0
-        while len(data) < page_size and next_index < len(indexed_data):
-            if next_index in indexed_data:
-                data.append(indexed_data[next_index])
-            next_index += 1
+        while len(data) < page_size and current_index < len(indexed_data):
+            if current_index in indexed_data:
+                data.append(indexed_data[current_index])
+                retrieved
+            current_index += 1
         return {
             "index": index,
             "next_index": next_index,
