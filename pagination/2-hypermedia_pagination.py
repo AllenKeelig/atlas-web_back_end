@@ -34,7 +34,7 @@ class Server:
         start_index, end_index = index_range(page, page_size)
         return dataset[start_index:end_index] \
             if start_index < len(dataset) else []
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """returns a dictionary"""
         data = self.get_page(page, page_size)
