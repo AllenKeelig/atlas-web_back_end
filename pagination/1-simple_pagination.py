@@ -35,6 +35,7 @@ class Server:
         return dataset[start_index:end_index] \
             if start_index < len(dataset) else []
 
+
 def index_range(page, page_size):
     """
     takes two integer arguments page and page_size
