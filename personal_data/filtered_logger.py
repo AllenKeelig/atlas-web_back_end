@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Create logger """
 import re
-from typing import List,
+from typing import List
 import logging
 import os
 import mysql.connector
