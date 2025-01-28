@@ -66,9 +66,9 @@ def get_db() -> MySQLConnection:
     """
     Returns a connector to the MySQL database.
 
-    The function retrieves database connection details from environment variables:
+    The function retrieves database connection from environment variables:
     - PERSONAL_DATA_DB_USERNAME: The database username (default: "root").
-    - PERSONAL_DATA_DB_PASSWORD: The database password (default: an empty string).
+    - PERSONAL_DATA_DB_PASSWORD: The database password (default: emptystring).
     - PERSONAL_DATA_DB_HOST: The database host (default: "localhost").
     - PERSONAL_DATA_DB_NAME: The name of the database.
 
