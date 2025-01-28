@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Create logger """
 import re
-from typing import List, Any
+from typing import List,
 import logging
 import os
 import mysql.connector
@@ -63,7 +63,18 @@ def get_logger() -> logging.Logger:
 
 
 def get_db() -> MySQLConnection:
-    """Returns a connector to the database"""
+    """
+    Returns a connector to the MySQL database.
+
+    The function retrieves database connection details from environment variables:
+    - PERSONAL_DATA_DB_USERNAME: The database username (default: "root").
+    - PERSONAL_DATA_DB_PASSWORD: The database password (default: an empty string).
+    - PERSONAL_DATA_DB_HOST: The database host (default: "localhost").
+    - PERSONAL_DATA_DB_NAME: The name of the database.
+
+    Returns:
+        MySQLConnection: A connection object to the MySQL database.
+    """
     username = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
     password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
     host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
