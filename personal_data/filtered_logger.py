@@ -7,7 +7,10 @@ import os
 import mysql.connector
 from mysql.connector.connection import MySQLConnection
 
-
+PERSONAL_DATA_DB_USERNAME = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+PERSONAL_DATA_DB_PASSWORD = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+PERSONAL_DATA_DB_HOST = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+PERSONAL_DATA_DB_NAME = os.getenv('PERSONAL_DATA_DB_NAME', 'name')
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
@@ -64,14 +67,9 @@ def get_logger() -> logging.Logger:
 
 def get_db() -> MySQLConnection:
     """Returns a connector to the database"""
-    username = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
-    password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
-    host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
-    database = os.getenv("PERSONAL_DATA_DB_NAME")
-
     return mysql.connector.connect(
-        user=username,
-        password=password,
-        host=host,
-        database=database
+        user=PERSONAL_DATA_DB_USERNAME,
+        password=PERSONAL_DATA_DB_PASSWORD,
+        host=PERSONAL_DATA_DB_HOST,
+        database=PERSONAL_DATA_DB_NAME
     )
