@@ -44,6 +44,7 @@ def filter_datum(
         lambda match: f"{match.group(1)}={redaction}{separator}",
         message)
 
+
 def get_logger() -> logging.Logger:
     """Creates and configures the logger"""
     logger = logging.getLogger("user_data")
