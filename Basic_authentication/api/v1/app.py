@@ -23,16 +23,14 @@ elif os.getenv('AUTH_TYPE') == "basic_auth":
 
 
 def before_request():
-    """Filter requests to secure the API."""
-    if auth is None:
-        return
-    excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
-    if request.path in excluded_paths:
-        return
-    if auth.require_auth(request.path, excluded_paths):
-        if auth.authorization_header(request) is None:
+    """ Before request"""
+    if auth and auth.require_auth(request.path,
+                                  ['/api/v1/status/',
+                                   '/api/v1/unauthorized/',
+                                   '/api/v1/forbidden/']):
+        if not auth.authorization_header(request):
             abort(401)
-        if auth.current_user(request) is None:
+        if not auth.current_user(request):
             abort(403)
 
 
