@@ -26,7 +26,9 @@ def before_request():
     """Filter requests to secure the API."""
     if auth is None:
         return
-    excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
+    excluded_paths = ['/api/v1/status/',
+                      '/api/v1/unauthorized/',
+                      '/api/v1/forbidden/']
     if request.path in excluded_paths:
         return
     if auth.require_auth(request.path, excluded_paths):
