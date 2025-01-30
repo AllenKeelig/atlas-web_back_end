@@ -10,7 +10,6 @@ from typing import TypeVar
 from models.user import User
 
 
-
 class BasicAuth(Auth):
     """BasicAuth class inherits from Auth."""
     def extract_base64_authorization_header(
