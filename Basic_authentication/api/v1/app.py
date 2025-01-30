@@ -21,6 +21,7 @@ elif os.getenv('AUTH_TYPE') == "basic_auth":
     auth = BasicAuth()
 
 
+@app.before_request
 def before_request():
     """Filter requests to secure the API."""
     if auth is None:
