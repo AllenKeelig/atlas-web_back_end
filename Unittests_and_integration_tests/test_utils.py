@@ -4,13 +4,25 @@ from parameterized import parameterized
 from utils import access_nested_map
 
 class TestAccessNestedMap(unittest.TestCase):
+    """ test for access_nested_map """
     @parameterized.expand([
-        ("simple_key", {"a": 1}, ("a",), 1),
-        ("nested_key", {"a": {"b": 2}}, ("a",), {"b": 2}),
-        ("deeply_nested_key", {"a": {"b": 2}}, ("a", "b"), 2),
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_map(self, name, nested_map, path, expected):
+    def test_access_nested_map(self, nested_map, path, expected):
+        """ test that result is as expected """
         self.assertEqual(access_nested_map(nested_map, path), expected)
+
+    @parameterized.expand([
+        ({}, ("a",), 'a'),
+        ({"a": 1}, ("a", "b"), 'b'),
+    ])
+    def test_access_nested_map_exception(self, nested_map, path, expected):
+        """ test access nested map with exception """
+        with self.assertRaises(KeyError) as context:
+            access_nested_map(nested_map, path)
+        self.assertEqual(context.exception.args[0], expected)
 
 if __name__ == "__main__":
     unittest.main()
