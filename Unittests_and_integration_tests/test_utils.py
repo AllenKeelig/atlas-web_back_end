@@ -3,6 +3,7 @@ import unittest
 from unittest import mock
 from parameterized import parameterized
 import utils
+from unittest.mock import patch
 
 class TestAccessNestedMap(unittest.TestCase):
     """ test for access_nested_map """
