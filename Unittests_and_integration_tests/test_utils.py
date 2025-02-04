@@ -3,7 +3,8 @@ import unittest
 from unittest import mock
 from parameterized import parameterized
 import utils
-from unittest.mock import patch
+from unittest.mock import patch, Mock
+from functools import wraps
 
 class TestAccessNestedMap(unittest.TestCase):
     """ test for access_nested_map """
@@ -49,6 +50,33 @@ class TestGetJson(unittest.TestCase):
            
             # Verify returned payload matches expected
             self.assertEqual(result, test_payload)
+
+def memoize(fn):
+    cache_name = f"_{fn.__name__}_cache"
+    @wraps(fn)
+    def wrapper(self):
+        if not hasattr(self, cache_name):
+            result = fn(self)
+            setattr(self, cache_name, result)
+        return getattr(self, cache_name)
+    return wrapper
+class TestMemoize(unittest.TestCase):
+    def test_memoize(self):
+        class TestClass:
+            def a_method(self):
+                return 42
+            @memoize
+            def a_property(self):
+                return self.a_method()
+        test_instance = TestClass()
+        with mock.patch.object(test_instance, 'a_method') as mock_method:
+            mock_method.return_value = 42
+            result1 = test_instance.a_property()
+            self.assertEqual(result1, 42)
+            mock_method.assert_called_once()
+            result2 = test_instance.a_property()
+            self.assertEqual(result2, 42)
+            mock_method.assert_called_once()
 
 if __name__ == "__main__":
     unittest.main()
