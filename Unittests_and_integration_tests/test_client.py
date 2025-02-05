@@ -2,9 +2,11 @@
 """unittest for client"""
 import unittest
 from unittest.mock import patch, PropertyMock
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 from utils import get_json
+import requests
+from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -78,6 +80,30 @@ class TestGithubOrgClient(unittest.TestCase):
                 ),
                 expected
             )
+
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Integration test for GithubOrgClient.public_repos"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Set up class method to start patching requests.get"""
+        cls.get_patcher = patch("requests.get")
+        cls.mock_get = cls.get_patcher.start()
+        
+        def side_effect(url):
+            if "orgs" in url:
+                return unittest.mock.Mock(json=lambda: cls.org_payload)
+            if "repos" in url:
+                return unittest.mock.Mock(json=lambda: cls.repos_payload)
+            return unittest.mock.Mock(json=lambda: {})
+        
+        cls.mock_get.side_effect = side_effect
+    
+    @classmethod
+    def tearDownClass(cls):
+        """Stop patching requests.get"""
+        cls.get_patcher.stop()
 
 
 if __name__ == "__main__":
