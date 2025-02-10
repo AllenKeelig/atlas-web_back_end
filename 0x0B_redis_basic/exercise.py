@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Redis basic"""
+"""
+Redis basic
+Learning Objectives
+Learn how to use redis for basic operations
+Learn how to use redis as a simple cache
+"""
 import redis
 import uuid
 import functools
