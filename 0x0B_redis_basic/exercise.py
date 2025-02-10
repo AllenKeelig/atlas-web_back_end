@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Redis basic"""
 import redis
 import uuid
 import functools
