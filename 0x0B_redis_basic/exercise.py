@@ -51,7 +51,6 @@ def replay(method: Callable):
               f"-> {output.decode('utf-8')}")
 
 
-
 class Cache:
     """
     Cache class. In the __init__ method, store an instance of the Redis client
