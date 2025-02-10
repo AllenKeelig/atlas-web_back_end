@@ -47,6 +47,11 @@ def replay(method: Callable):
         print(f"{method_name}(*{input_args.decode('utf-8')}) -> {output.decode('utf-8')}")
 
 class Cache:
+    """
+    Cache class. In the __init__ method, store an instance of the Redis client
+    as a private variable named _redis (using redis.Redis()) and flush the
+    instance using flushdb.
+    """
     def __init__(self):
         """Initialize the Redis client and flush the database."""
         self._redis = redis.Redis()
