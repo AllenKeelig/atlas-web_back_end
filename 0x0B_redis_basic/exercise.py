@@ -47,10 +47,7 @@ def replay(method: Callable):
 
     print(f"{method_name} was called {len(inputs)} times:")
     for input_args, output in zip(inputs, outputs):
-        print(f"{method_name}(*{input_args.decode(
-            'utf-8')}) -> {output.decode('utf-8')}"
-            )
-
+        print(f"{method_name}(*{input_args.decode('utf-8')}) -> {output.decode('utf-8')}")
 
 class Cache:
     """
@@ -65,13 +62,20 @@ class Cache:
 
     @count_calls
     @call_history
-    def store(self, data: Union[str, bytes, int, float]) -> str:
+    def store(
+        self,
+        data: Union[str, bytes, int, float]
+        ) -> str:
         """Store data in Redis with a randomly generated key."""
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float, None]:
+    def get(
+            self,
+            key: str,
+            fn: Optional[Callable] = None
+            ) -> Union[str, bytes, int, float, None]:
         """
         Retrieve data from Redis and apply a conversion function if provided.
         """
