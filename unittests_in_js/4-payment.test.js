@@ -1,14 +1,12 @@
-
 const sinon = require('sinon');
-const assert = require('chai').assert;
 const Utils = require('./utils');
-const sendPaymentRequestToApi = require('./3-payment');
-
-describe('sendPaymentRequestToApi', function () {
-  it('should call Utils.calculateNumber with correct arguments', function () {
-    const spy = sinon.spy(Utils, 'calculateNumber');
+const sendPaymentRequestToApi = require('./4-payment');
+describe('Payment tests', () => {
+  it('Check that Utils is called correctly, with stub', () => {
+    const stub = sinon.stub(Utils, 'calculateNumber').callsFake(() => 10);
+    const spy = sinon.spy(console, 'log');
     sendPaymentRequestToApi(100, 20);
-    assert.isTrue(spy.calledWith('SUM', 100, 20), 'Utils.calculateNumber should be called with correct arguments');
+    sinon.assert.calledWithExactly(spy, 'The total is: 10');
     spy.restore();
   });
 });
