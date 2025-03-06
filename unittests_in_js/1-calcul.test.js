@@ -7,9 +7,9 @@ describe('calculateNumber', function () {
       assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
     });
 
-    it('should return 3 when given (SUM, 1.2, 1.4)', function () {
-      assert.strictEqual(calculateNumber('SUM', 1.2, 1.4), 3);
-    });
+    it('should return 2 when given (SUM, 1.2, 1.4)', function () {
+        assert.strictEqual(calculateNumber('SUM', 1.2, 1.4), 2);
+    });      
   });
 
   describe('SUBTRACT', function () {
