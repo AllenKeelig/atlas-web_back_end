@@ -1,0 +1,13 @@
+{
+    "name": "unittests_in_js",
+    "version": "1.0.0",
+    "description": "Unit testing with Mocha",
+    "main": "0-calcul.js",
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha"
+    },
+
+    "devDependencies": {
+        "mocha": "^11.1.0"
+    }
+}
