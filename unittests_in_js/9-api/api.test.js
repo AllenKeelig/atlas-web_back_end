@@ -14,13 +14,23 @@ describe('Index page', () => {
       done();
     });
   });
-  it('should return correct text response', function (done) {
-    chai
-      .request('http://localhost:7865')
-      .get('/')
-      .end((err, res) => {
-        expect(res.text).to.equal('Welcome to the payment system');
-        done();
-      });
+  it('Cart endpoint handles integer IDs', (done) => {
+    request.get('http://localhost:7865/cart/12', (error, response, body) => {
+      if (error) return done(error);
+
+      expect(response.statusCode).to.equal(200);
+      const expectedResponse = 'Payment methods for cart 12';
+
+      expect(body).to.equal(expectedResponse);
+      done();
+    });
+  });
+  it('Cart endpoint rejects non-integer IDs', (done) => {
+    request.get('http://localhost:7865/cart/hello', (error, response, body) => {
+      if (error) return done(error);
+
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
   });
 });
