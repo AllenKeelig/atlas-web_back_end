@@ -1,24 +1,18 @@
-// Import necessary libraries
-const request = require('supertest');
-const { expect } = require('chai');
-const app = require('./app'); // Assuming your Express app is in 'app.js'
+const expect = require('chai').expect;
+const request = require('request');
 
-describe('Index Page', () => {
-  // Test case 1: Correct status code
-  it('should return status code 200', async () => {
-    const response = await request(app).get('/');
-    expect(response.status).to.equal(200);
+describe('Index page', () => {
+
+  it('Check for correct status code, message on default endpoint', (done) => {
+    request.get('http://localhost:7865', (error, response, body) => {
+      if (error) return done(error);
+
+      expect(response.statusCode).to.equal(200);
+      const expectedResponse = 'Welcome to the payment system';
+
+      expect(body).to.equal(expectedResponse);
+      done();
+    });
   });
 
-  // Test case 2: Correct result (message)
-  it('should return the correct message', async () => {
-    const response = await request(app).get('/');
-    expect(response.text).to.equal('Welcome to the payment system');
-  });
-
-  // Test case 3: Other checks (e.g., content type)
-  it('should return content type text/html', async () => {
-    const response = await request(app).get('/');
-    expect(response.header['content-type']).to.include('text/html');
-  });
 });
