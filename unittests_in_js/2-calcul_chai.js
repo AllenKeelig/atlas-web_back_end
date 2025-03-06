@@ -4,7 +4,26 @@ const calculateNumber = require('./2-calcul_chai');
 describe('calculateNumber', function () {
   describe('SUM', function () {
     it('should return 6 when given (SUM, 1.4, 4.5)', function () {
-      expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
+      expect(calculateNumber('SUM', 1.function calculateNumber(type, a, b) {
+        const roundedA = Math.round(a);
+        const roundedB = Math.round(b);
+      
+        if (type === 'SUM') {
+          return roundedA + roundedB;
+        } else if (type === 'SUBTRACT') {
+          return roundedA - roundedB;
+        } else if (type === 'DIVIDE') {
+          if (roundedB === 0) {
+            return 'Error';
+          }
+          return roundedA / roundedB;
+        } else {
+          throw new Error('Invalid operation type');
+        }
+      }
+      
+      module.exports = calculateNumber;
+      4, 4.5)).to.equal(6);
     });
 
     it('should return 2 when given (SUM, 1.2, 1.4)', function () {
