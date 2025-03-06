@@ -28,4 +28,17 @@ describe('calculateNumber', function () {
     });
 
     it('should return "Error" when given (DIVIDE, 1.4, 0)', function () {
-      assert.strictEqual(calculateNumbe
+      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
+    });
+
+    it('should return 5 when given (DIVIDE, 10.2, 2)', function () {
+      assert.strictEqual(calculateNumber('DIVIDE', 10.2, 2), 5);
+    });
+  });
+
+  describe('Invalid Operation', function () {
+    it('should throw an error when an invalid operation is given', function () {
+      assert.throws(() => calculateNumber('MULTIPLY', 2, 3), Error);
+    });
+  });
+});
